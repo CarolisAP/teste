@@ -5,39 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Nova Conta</title>
     <style>
+        /* CSS do formulário */
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-        .header img {
-            max-width: 100%;
-            height: auto;
-            display: inline-block;
-        }
-        .navbar {
-            display: flex;
-            justify-content: space-around;
-            background-color: #333;
-            padding: 1rem;
-            width: 100%;
-        }
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            padding: 14px 20px;
-            display: block;
-        }
-        .navbar a:hover {
-            background-color: #575757;
-            border-radius: 4px;
+            margin: 0;
+            padding: 0;
         }
         .signup-section {
             margin-top: 2rem;
@@ -47,15 +22,9 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 90%;
             max-width: 600px;
-            box-sizing: border-box;
         }
         .signup-section h2 {
-            margin-bottom: 1rem;
             text-align: center;
-        }
-        .signup-form {
-            display: flex;
-            flex-direction: column;
         }
         .signup-form label {
             margin-bottom: 0.5rem;
@@ -66,6 +35,7 @@
             margin-bottom: 1rem;
             border-radius: 5px;
             border: 1px solid #ccc;
+            width: 100%;
             font-size: 16px;
         }
         .signup-form button {
@@ -79,9 +49,6 @@
         .signup-form button:hover {
             background-color: #575757;
         }
-        #idioma-desejado-section, #idioma-ensinado-section {
-            display: none;
-        }
         .error {
             color: red;
             margin-bottom: 1rem;
@@ -90,19 +57,6 @@
     </style>
 </head>
 <body>
-    <div class="header">
-        <img src="capa4.png" alt="Imagem de Capa">
-    </div>
-
-    <div class="navbar">
-        <a href=./home.html>Home</a>
-        <a href=./sobre_nos.html>Sobre nós</a>
-        <a href=./professores.html>Professores</a>
-        <a href=./alunos.html>Alunos</a>
-        <a href=./comunidade.html>Comunidade</a>
-        <a href=./login.html>Login</a>
-         <!-- Aqui podemos adicionar mais abas de navegação -->
-    </div>
 
     <div class="signup-section">
         <h2>Criar Nova Conta</h2>
@@ -147,7 +101,6 @@
     </div>
 
     <script>
-        // Script para exibir/ocultar campos específicos com base na escolha do usuário
         const tipoSelect = document.getElementById('tipo');
         const idiomaDesejadoSection = document.getElementById('idioma-desejado-section');
         const idiomaEnsinadoSection = document.getElementById('idioma-ensinado-section');
@@ -162,7 +115,7 @@
                 idiomaEnsinadoSection.style.display = 'block';
             }
         });
-         // campo para validar a senha
+
         function validateForm() {
             const senha = document.getElementById('senha').value;
             const confirmSenha = document.getElementById('confirm_senha').value;

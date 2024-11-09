@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Janela de Chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        .chat-container {
+            width: 400px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            height: 500px;
+            overflow: hidden;
+        }
+        .chat-header {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.2rem;
+            border-bottom: 1px solid #ccc;
+        }
+        .chat-body {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .message {
+            padding: 0.5rem;
+            border-radius: 10px;
+            max-width: 70%;
+        }
+        .message.sent {
+            background-color: #333;
+            color: white;
+            align-self: flex-end;
+        }
+        .message.received {
+            background-color: #eee;
+            align-self: flex-start;
+        }
+        .chat-footer {
+            display: flex;
+            padding: 1rem;
+            border-top: 1px solid #ccc;
+        }
+        .chat-footer input {
+            flex: 1;
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+        .chat-footer button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            margin-left: 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .chat-footer button:hover {
+            background-color: #575757;
+        }
+        .schedule-button {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .schedule-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chat-container">
+        <div class="chat-header">
+            Chat com Professor/Aluno
+        </div>
+        <div class="chat-body" id="chat-body">
+            <!-- As mensagens trocadas aparecerão aqui -->
+            <div class="message received">
+                Olá, tudo bem? Podemos marcar uma aula para amanhã?
+            </div>
+            <div class="message sent">
+                Claro! Qual horário seria melhor para você?
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chat-input" placeholder="Digite uma mensagem...">
+            <button id="send-button">Enviar</button>
+        </div>
+        <!-- Botão de agendamento -->
+        <button class="schedule-button" onclick="scheduleClass()">Agendar Aula</button>
+    </div>
+
+    <script>
+        // Função para simular envio de mensagens (pode ser substituído por funcionalidade em tempo real)
+        document.getElementById('send-button').addEventListener('click', function() {
+            const chatInput = document.getElementById('chat-input');
+            const chatBody = document.getElementById('chat-body');
+
+            if (chatInput.value.trim() !== '') {
+                // Criando nova mensagem
+                const message = document.createElement('div');
+                message.classList.add('message', 'sent');
+                message.textContent = chatInput.value;
+
+                // Adicionando ao corpo do chat
+                chatBody.appendChild(message);
+                chatBody.scrollTop = chatBody.scrollHeight;  // Rola para o fim do chat
+
+                // Limpa o campo de input
+                chatInput.value = '';
+            }
+        });
+        
+
+        // Função para agendamento de aulas
+        function scheduleClass() {
+            const chatBody = document.getElementById('chat-body');
+            const schedulePrompt = document.createElement('div');
+            schedulePrompt.classList.add('message', 'sent');
+            schedulePrompt.innerHTML = "Aula agendada para <strong>20/11/2024, 14:00</strong>";
+            
+            chatBody.appendChild(schedulePrompt);
+            chatBody.scrollTop = chatBody.scrollHeight;  // Rola para o fim do chat
+        }
+
+
+    </script>
+</body>
+</html>

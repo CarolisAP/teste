@@ -1,0 +1,195 @@
+<!DOCTYPE html> 
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidade - Conversas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f5f5f5;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            padding: 1rem;
+            width: 100%;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            display: block;
+        }
+        .navbar a:hover {
+            background-color: #575757;
+            border-radius: 4px;
+        }
+        .community-container {
+            width: 90%;
+            max-width: 1200px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+        .community-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .community-header h2 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        .chat-box {
+            display: flex;
+            flex-direction: column;
+            height: 500px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background-color: #f0f0f0;
+        }
+        .message {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .message.sent {
+            background-color: #007bff;
+            color: white;
+            align-self: flex-end;
+        }
+        .message.received {
+            background-color: #eee;
+            align-self: flex-start;
+        }
+        .chat-footer {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-top: 1px solid #ccc;
+        }
+        .chat-footer input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+        }
+        .chat-footer button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .chat-footer button:hover {
+            background-color: #0056b3;
+        }
+        .chat-footer label {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .chat-footer label:hover {
+            background-color: #218838;
+        }
+        .chat-footer input[type="file"] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href=./home.html>Home</a>
+        <a href=./sobre_nos.html>Sobre nós</a>
+        <a href=./professores.html>Professores</a>
+        <a href=./alunos.html>Alunos</a>
+        <a href=./comunidade.html>Comunidade</a> <!-- Novo Link para Comunidade -->
+        <a href=./login.html>Login</a>
+    </div>
+
+    <div class="community-container">
+        <div class="community-header">
+            <h2>Comunidade</h2>
+            <p>Converse com outros usuários, compartilhe suas experiências e faça novas amizades!</p>
+        </div>
+
+        <div class="chat-box">
+            <div class="chat-messages" id="chat-messages">
+                <!-- Exemplo de mensagem enviada -->
+                <div class="message sent">
+                    <strong>Você:</strong> Olá, alguém disponível para praticar espanhol?
+                </div>
+                <!-- Exemplo de mensagem recebida -->
+                <div class="message received">
+                    <strong>Maria:</strong> Oi! Eu posso ajudar com isso.
+                </div>
+            </div>
+
+            <div class="chat-footer">
+                <!-- Input para envio de texto -->
+                <input type="text" id="message-input" placeholder="Escreva uma mensagem...">
+                <!-- Botão para envio de áudio -->
+                <label for="audio-input">🎤 Enviar Áudio</label>
+                <input type="file" id="audio-input" accept="audio/*">
+                <!-- Botão para envio de imagem -->
+                <label for="image-input">📷 Enviar Imagem</label>
+                <input type="file" id="image-input" accept="image/*">
+                <!-- Botão de envio -->
+                <button id="send-button">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('send-button').addEventListener('click', function() {
+            const messageInput = document.getElementById('message-input');
+            const chatMessages = document.getElementById('chat-messages');
+
+            if (messageInput.value.trim() !== '') {
+                // Criação de uma nova mensagem enviada
+                const message = document.createElement('div');
+                message.classList.add('message', 'sent');
+                message.innerHTML = `<strong>Você:</strong> ${messageInput.value}`;
+                
+                // Adicionar a nova mensagem ao chat
+                chatMessages.appendChild(message);
+                
+                // Rolar o chat para a última mensagem
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                // Limpar o campo de entrada
+                messageInput.value = '';
+            }
+        });
+
+        // Funções adicionais para upload de áudios e imagens podem ser implementadas
+    </script>
+
+</body>
+</html>

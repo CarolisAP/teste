@@ -1,4 +1,22 @@
+<?php
+include 'config.php'; // Inclui a conexão com o banco
+
+// Consulta as informações do aluno (suponha que o ID seja passado via URL)
+$id = $_GET['id'];
+$sql = "SELECT * FROM usuarios WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$result = $stmt->get_result();
+$aluno = $result->fetch_assoc();
+?>
 <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Aluno</title>
+    <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -147,6 +165,19 @@
             <button type="submit">Salvar Biografia</button>
         </div>
 
+        <!-- código php para o formulario -->
+         
+        <?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $biografia = $_POST['biografia'];
+    $sql = "UPDATE usuarios SET biografia = ? WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("si", $biografia, $id);
+    $stmt->execute();
+}
+?>
+
+
         <!-- Seção para Buscar Professores -->
         <div class="profile-section">
             <h3>Buscar Professores</h3>
@@ -208,3 +239,20 @@
     </div>
 </body>
 </html>
+    <!-- Inclua o CSS conforme o exemplo fornecido -->
+</head>
+<body>
+    <!-- Restante do HTML conforme o exemplo fornecido -->
+    <div class="profile-info">
+        <h2><?php echo htmlspecialchars($aluno['nome']); ?></h2>
+        <p><strong>Email:</strong> <?php echo htmlspecialchars($aluno['email']); ?></p>
+        <p><strong>Cidade e Estado:</strong> <?php echo htmlspecialchars($aluno['cidade']); ?></p>
+        <p><strong>Idioma Desejado:</strong> <?php echo htmlspecialchars($aluno['idioma_desejado']); ?></p>
+        <p><strong>Data de Nascimento:</strong> <?php echo htmlspecialchars($aluno['data_nascimento']); ?></p>
+    </div>
+</body>
+</html>
+<?php
+// Fechar a conexão
+$conn->close();
+?>

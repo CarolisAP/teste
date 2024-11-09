@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .header img {
+            max-width: 100%;
+            height: auto;
+            display: inline-block;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            padding: 1rem;
+            width: 100%;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            display: block;
+        }
+        .navbar a:hover {
+            background-color: #575757;
+            border-radius: 4px;
+        }
+        .main-content {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            width: 100%;
+            max-width: 1200px;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+        .text-content {
+            flex: 1;
+            max-width: 600px; /* Largura máxima do conteúdo de texto */
+            margin-right: 2rem; /* Espaço entre o texto e o carrossel */
+        }
+        .carousel {
+            position: relative;
+            width: 100%; 
+            max-width: 580px; 
+            overflow: hidden;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 1rem; /* Espaço entre o carrossel e o botão */
+        }
+        .carousel .slides {
+            display: flex;
+            transition: transform 1s ease;
+        }
+        .carousel .slide {
+            min-width: 100%;
+        }
+        .carousel img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .signup-button {
+            padding: 1rem 2rem;
+            font-size: 16px;
+            color: #fff;
+            background-color: #070707d4;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem; /* Espaço acima do botão */
+        }
+        .signup-button:hover {
+            background-color: #f3650c;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="capa4.png" alt="Imagem de Capa">
+    </div>
+
+    <div class="navbar">
+        <a href=./home.html>Home</a>
+        <a href=./sobre_nos.html>Sobre nós</a>
+        <a href=./professores.html>Professores</a>
+        <a href=./alunos.html>Alunos</a>
+        <a href=./comunidade.html>Comunidade</a>
+        <a href=./login.html>Login</a>
+        <!-- Aqui podemos adicionar mais abas de navegação -->
+    </div>
+
+    <div class="main-content">
+        <div class="text-content">
+            <h1>Bem-vindo à Conectando Interesses!</h1>
+            <p>Aqui você tem tudo o que precisa para alavancar os seus estudos em línguas estrangeiras. Vai ficar fora dessa? </p>
+            <a href=./cadastro.html class="signup-button">Cadastre-se já!</a>
+        </div>
+
+        <div class="carousel">
+            <div class="slides">
+                <div class="slide"><img src="1.png" alt="Imagem 1"></div>
+                <div class="slide"><img src="2.png" alt="Imagem 2"></div>
+                <div class="slide"><img src="3.png" alt="Imagem 3"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Carrossel JavaScript
+        const slides = document.querySelector('.slides');
+        const slideCount = document.querySelectorAll('.slide').length;
+        let currentIndex = 0;
+
+        function showNextSlide() {
+            currentIndex = (currentIndex + 1) % slideCount;
+            const offset = -currentIndex * 100;
+            slides.style.transform = `translateX(${offset}%)`;
+        }
+
+        setInterval(showNextSlide, 3000); // Muda a imagem a cada 3 segundos
+    </script>
+</body>
+</html>

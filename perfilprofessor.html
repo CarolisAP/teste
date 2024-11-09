@@ -1,0 +1,195 @@
+<!DOCTYPE html> 
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Professor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .header img {
+            max-width: 100%;
+            height: auto;
+            display: inline-block;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            padding: 1rem;
+            width: 100%;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            display: block;
+        }
+        .navbar a:hover {
+            background-color: #575757;
+            border-radius: 4px;
+        }
+        .profile-container {
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin-right: 2rem;
+        }
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .profile-info h2 {
+            margin: 0;
+            margin-bottom: 1rem;
+        }
+        .profile-info p {
+            margin: 0.5rem 0;
+        }
+        .profile-section {
+            margin-top: 2rem;
+        }
+        .profile-section h3 {
+            margin-bottom: 1rem;
+        }
+        .profile-section textarea, .profile-section input, .profile-section select {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        .profile-section button {
+            padding: 1rem 2rem;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .profile-section button:hover {
+            background-color: #575757;
+        }
+        .profile-section a {
+            text-decoration: none;
+            padding: 1rem 2rem;
+            background-color: #25D366;
+            color: white;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .profile-section a:hover {
+            background-color: #128C7E;
+        }
+        /* Novo estilo para o botão de abrir o chat */
+        .open-chat-btn {
+            padding: 1rem 2rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        .open-chat-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <img src="capa4.png" alt="Imagem de Capa">
+    </div>
+
+    <div class="navbar">
+        <a href=./home.html>Home</a>
+        <a href=./sobre_nos.html>Sobre nós</a>
+        <a href=./professores.html>Professores</a>
+        <a href=./alunos.html>Alunos</a>
+        <a href=./comunidade.html>Comunidade</a>
+        <a href=./login.html>Login</a>
+    </div>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <div class="profile-photo" id="profile-photo"></div>
+            <div class="profile-info">
+                <h2>Nome do Professor</h2>
+                <p><strong>Email:</strong> professor@email.com</p>
+                <p><strong>Cidade e Estado:</strong> Cidade, Estado</p>
+                <p><strong>Idioma Ensinado:</strong> Idioma</p>
+                <p><strong>Data de Nascimento:</strong> 01/01/1990</p>
+            </div>
+        </div>
+
+        <!-- Seção para Inserção de Diplomas -->
+        <div class="profile-section">
+            <h3>Inserir Diplomas</h3>
+            <input type="file" id="diploma-upload" accept="image/*, application/pdf">
+            <button type="submit">Salvar Diploma</button>
+        </div>
+
+        <!-- Seção para Biografia e Interesses -->
+        <div class="profile-section">
+            <h3>Biografia e Experiência</h3>
+            <textarea id="biografia" rows="6" placeholder="Escreva sobre sua experiência e interesses..."></textarea>
+            <button type="submit">Salvar Biografia</button>
+        </div>
+
+        <!-- Botão para WhatsApp -->
+        <div class="profile-section">
+            <h3>Entrar em Contato</h3>
+            <a href="https://wa.me/seu-numero-de-telefone" target="_blank">Contato via WhatsApp</a>
+        </div>
+
+        <!-- Seção para Gerenciamento de Aulas Agendadas -->
+        <div class="profile-section">
+            <h3>Aulas Agendadas</h3>
+            <div id="aulas-agendadas">
+                <!-- As aulas agendadas pelos alunos aparecerão aqui -->
+                <p><strong>Aluno:</strong> Nome do Aluno</p>
+                <p><strong>Data e Hora:</strong> 20/11/2024, 14:00</p>
+                <hr>
+                <p><strong>Aluno:</strong> Nome do Aluno 2</p>
+                <p><strong>Data e Hora:</strong> 22/11/2024, 10:00</p>
+                <hr>
+            </div>
+        </div>
+
+        <!-- Botão para abrir o chat -->
+        <div class="profile-section">
+            <button class="open-chat-btn" onclick="window.location.href='./chat.html'">Abrir Chat com aluno</button>
+        </div>
+
+    </div>
+
+</body>
+</html>
